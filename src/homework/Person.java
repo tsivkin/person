@@ -1,12 +1,12 @@
 package homework;
 
+import java.time.Year;
+
 public class Person {
     private String name;
     private String middleName;
     private String familyName;
     private int age;
-    private int birthYear;
-    private int currentYear = 2024;
 
 
     public Person(String name, String middleName, String familyName, int age) {
@@ -14,7 +14,6 @@ public class Person {
         this.middleName = middleName;
         this.familyName = familyName;
         this.age = age;
-        this.birthYear = calcBirthYear();
     }
 
     public String getName() {
@@ -57,17 +56,16 @@ public class Person {
     public void setAge(int age) {
         if (age != 0) {
             this.age = age;
-            this.birthYear = calcBirthYear();
         }
         System.out.println("Возраст был изменен");
     }
 
     public int calcBirthYear() {
-        return birthYear = currentYear - this.age;
+        return Year.now().getValue() - this.age;
     }
 
     @Override
     public String toString() {
-        return "{ " + familyName + " " + name + " " + middleName + " " + birthYear + " }";
+        return "{ " + familyName + " " + name + " " + middleName + " " + calcBirthYear() + " }";
     }
 }
